@@ -1,0 +1,62 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
+
+# PHPStorm meta files
+.idea/
+
+/.phpunit.cache
+/.phpunit.result.cache
+
+/public/report.html
+/downloads/*
+/public/assets
+/public/icons
+/public/demo
+/public/old
+/public/uploads
+*.sql
+.pnpm-store
+
+# Assets
+/assets/css/app.css
+/assets/css/app.css.map
+/node_modules/
+/public/build/
+/public/podcasts/
+npm-debug.log
+yarn-error.log
+.vault_pass
+
+.phpunit
+
+
+.idea
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
