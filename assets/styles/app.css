@@ -6,7 +6,9 @@
     --space: 8px;
     --border: #f4f4f4;
     --background: #a6b1e1;
-    --shadow: #f4f4f4
+    --shadow: #f4f4f4;
+    --contrast : #244b8b;
+    --red: #d90429;
 }
 
  /*Reset*/
