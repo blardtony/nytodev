@@ -1,0 +1,23 @@
+:root {
+    --container-padding: 24px;
+    --container-width: calc(100vw - var(--container-padding) * 2);
+}
+
+@media only screen and (min-width: 992px) {
+    :root {
+        --container-padding: 32px;
+    }
+}
+
+@media only screen and (min-width: 1370px) {
+    :root {
+        --container-padding: 20px;
+        --container-width: 1330px;
+    }
+}
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0  calc(50% - var(--container-width)/ 2);
+}
