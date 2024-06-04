@@ -5,10 +5,12 @@
     --gap: 20px;
     --space: 8px;
     --border: #f4f4f4;
-    --background: #a6b1e1;
+    --background: #f5F5F5;
     --shadow: #f4f4f4;
     --contrast : #244b8b;
+    --contrast-alpha-25 : rgba(36, 75, 139, 0.25);
     --red: #d90429;
+    --alert-bg: #fff;
 }
 
  /*Reset*/
