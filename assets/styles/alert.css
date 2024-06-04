@@ -1,0 +1,22 @@
+.alert {
+    background: var(--alert-bg);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 4px var(--shadow);
+    border-radius: 3px;
+    transition: 0.3s;
+    margin: calc(var(--space) * 3) auto;
+    padding: calc(var(--space) * 2);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    animation: alertIn 0.5s both;
+    line-height: 1.2;
+    position: relative;
+    border-bottom: 3px solid var(--border);
+    color: #000;
+}
+
+.alert-danger {
+    border-bottom-color: var(--red);
+    color: var(--red);
+}
