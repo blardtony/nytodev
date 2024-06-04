@@ -24,7 +24,6 @@ readonly class LoginEventSubscriber implements EventSubscriberInterface
 
     public function onAuthenticationFailure(): void
     {
-        dump('Event dispatched');
     }
 
     public function onAuthenticationSuccess(LoginSuccessEvent $event): void
