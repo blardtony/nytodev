@@ -7,7 +7,18 @@
 {% set type = type|default('info') %}
 {% set message = message|default('') %}
 {% set class = 'alert-' ~ type %}
+{% set icon = 'heroicons:information-circle' %}
+
+{% if type == 'success' %}
+    {% set icon = 'heroicons:check-circle' %}
+{% elseif type == 'warning' %}
+    {% set icon = 'heroicons:exclamation-circle' %}
+{% elseif type == 'danger' %}
+    {% set icon = 'heroicons:x-circle' %}
+{% endif %}
+
 <div class="alert {{ class }}">
+    {{ ux_icon(icon) }}
     <div>
         {{ message }}
     </div>
