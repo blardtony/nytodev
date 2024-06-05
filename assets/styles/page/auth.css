@@ -1,0 +1,24 @@
+.auth-container {
+    max-width: 500px;
+    margin: calc(5 * var(--space)) auto;
+    width: calc(100% - var(--container-padding)* 2);
+}
+
+.auth-form {
+    background: var(--alert-bg);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 4px var(--shadow);
+    border-radius: 3px;
+    transition: 0.3s;
+    padding: calc(var(--space) * 3);
+}
+
+.auth-title {
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: calc(var(--space) * 3);
+}
+.auth-form > * + * {
+    margin-top: calc(var(--space) * 2);
+}

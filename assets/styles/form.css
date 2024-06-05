@@ -1,0 +1,41 @@
+label {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+input:disabled {
+    opacity: 0.7;
+}
+.form-group input,
+.form-group textarea,
+.form-group select{
+     border: 1px solid var(--border);
+     background: var(--background);
+     border-radius: 3px;
+     color: var(--color);
+     padding: calc(2 * var(--space)) var(--space);
+     display: block;
+     width: 100%;
+     outline: none;
+     min-height: 48px;
+ }
+.form-group textarea {
+    min-height: 150px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: var(--space);
+}
+
+
+
+/* Accessibility */
+.form-group input:focus,
+.form-check input:focus + label::before,
+select:focus,
+textarea:focus,
+form button:focus {
+     border-color: var(--contrast);
+     box-shadow: 0 0 0 3px var(--contrast-alpha-25);
+ }
