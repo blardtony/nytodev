@@ -1,0 +1,17 @@
+{# Alert component #}
+{#
+    Parameters:
+    - type: string
+    - message: string
+#}
+{% set type = type|default('info') %}
+{% set message = message|default('') %}
+{% set class = 'alert-' ~ type %}
+<div class="alert {{ class }}">
+    <div>
+        {{ message }}
+    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        {{ ux_icon('heroicons:x-mark') }}
+    </button>
+</div>
