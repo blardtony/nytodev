@@ -12,4 +12,12 @@ import './styles/alert.css';
 import './styles/page/auth.css';
 import './styles/form.css';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+const closeAlertButtons = document.querySelectorAll('.alert .close');
+closeAlertButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        button.parentElement.classList.add('out');
+        setTimeout(() => {
+            button.parentElement.remove();
+        }, 500);
+    });
+});
