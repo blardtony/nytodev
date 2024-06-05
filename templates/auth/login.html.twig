@@ -6,9 +6,7 @@
     <div class="auth-container">
         <h1 class="auth-title">Se connecter</h1>
         {% if error %}
-            <div class="alert alert-danger">
-                {{ error.messageKey | trans(error.messageData, 'security') }}
-            </div>
+            {{ include('components/_alert.html.twig', {type: 'danger', message:  error.messageKey | trans(error.messageData, 'security') }) }}
         {% endif %}
         <form class="auth-form" method="post">
             <div class="form-group">
