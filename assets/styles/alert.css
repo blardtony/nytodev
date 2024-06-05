@@ -18,7 +18,11 @@
 .alert.out {
     animation: alertOut 0.5s both;
 }
-
+.alert > svg:first-child {
+    width: 30px;
+    height: 30px;
+    margin-right: calc(var(--space) * 2);
+}
 .alert .close {
     width: 30px;
     height: 30px;
