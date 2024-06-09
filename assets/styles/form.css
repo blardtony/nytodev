@@ -39,3 +39,14 @@ form button:focus {
      border-color: var(--contrast);
      box-shadow: 0 0 0 3px var(--contrast-alpha-25);
  }
+
+.form-errors {
+    color: var(--red);
+    font-size: .9rem;
+    margin-top: .3rem;
+    line-height: 1.2;
+}
+
+.form-errors > * + * {
+    margin-top: .3rem;
+}
