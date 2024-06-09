@@ -1,5 +1,7 @@
-{% for type, messages in app.flashes %}
-    {% for message in messages %}
-        {{ include('components/_alert.html.twig', {type: type, message: message | nl2br}) }}
+<div class="container">
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            {{ include('components/_alert.html.twig', {type: type, message: message | nl2br}) }}
+        {% endfor %}
     {% endfor %}
-{% endfor %}
+</div>
