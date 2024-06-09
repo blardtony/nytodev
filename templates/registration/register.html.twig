@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegistrationController!{% endblock %}
+
+{% block body %}
+
+<div class="auth-container">
+    <h1 class="auth-title">S'inscrire</h1>
+    {{ form_start(form, {attr: {'class': 'auth-form'}}) }}
+        <div class="form-group">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.plainPassword.first) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.plainPassword.second) }}
+        </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
