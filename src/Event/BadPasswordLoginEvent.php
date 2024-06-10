@@ -3,10 +3,11 @@
 namespace App\Event;
 
 use App\Entity\User;
+use Symfony\Contracts\EventDispatcher\Event;
 
-readonly class BadPasswordLoginEvent
+class BadPasswordLoginEvent extends Event
 {
-    public function __construct(private User $user)
+    public function __construct(private readonly User $user)
     {
     }
 
