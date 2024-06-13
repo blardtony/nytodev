@@ -32,7 +32,7 @@ class SecurityControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertResponseRedirects(self::LOGIN_PATH);
         $client->followRedirect();
-        $this->assertEquals(1, $client->getCrawler()->filter('.alert')->count());
+        $this->assertEquals(1, $client->getCrawler()->filter('.alert-danger')->count());
     }
 
     public function testFailLoginBadPassword(): void
