@@ -12,7 +12,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 readonly class UserService
 {
-    public function __construct(private EntityManagerInterface $entityManager, private UserPasswordHasherInterface $hasher, private EventDispatcherInterface $dispatcher)
+    public function __construct(private EntityManagerInterface $entityManager, private UserPasswordHasherInterface $hasher, private EventDispatcherInterface $dispatcher, private TokenService $tokenService)
     {
     }
 
@@ -31,16 +31,18 @@ readonly class UserService
                 )
             )
             ->setCreatedAt(new DateTimeImmutable())
+            ->setToken($this->tokenService->generateToken())
         ;
         $this->saveUser($user, new UserCreatedEvent($user));
     }
 
     public function saveUser(User $user, ?Event $event = null): void
     {
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+
         if ($event) {
             $this->dispatcher->dispatch($event);
         }
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
     }
 }
