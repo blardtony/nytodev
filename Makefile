@@ -34,6 +34,7 @@ linters: vendor/autoload.php ## Lance le linter
 	$(sy) lint:yaml config
 	$(sy) lint:twig templates
 	$(sy) lint:container
+	vendor/bin/phpstan analyse src --level=9
 # Dépendances
 vendor/autoload.php: composer.lock
 	$(php) composer install
