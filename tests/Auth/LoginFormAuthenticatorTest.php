@@ -18,8 +18,8 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 
 class LoginFormAuthenticatorTest extends TestCase
 {
-    /** @var MockObject|UserRepository */
-    private MockObject|UserRepository $userRepository;
+    /** @var MockObject&UserRepository */
+    private MockObject&UserRepository $userRepository;
 
     /** @var LoginFormAuthenticator  */
     private LoginFormAuthenticator $authenticator;
