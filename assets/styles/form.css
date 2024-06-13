@@ -7,9 +7,7 @@ label {
 input:disabled {
     opacity: 0.7;
 }
-.form-group input,
-.form-group textarea,
-.form-group select{
+.form-group :is(input, textarea, select) {
      border: 1px solid var(--border);
      background: var(--background);
      border-radius: 3px;
@@ -28,9 +26,15 @@ input:disabled {
     margin-bottom: var(--space);
 }
 
+.form-group.invalid :is(input, textarea, select) {
+    border-color: var(--red);
+}
 
+.form-group.invalid label {
+    color: var(--red);
+}
 
-/* Accessibility */
+    /* Accessibility */
 .form-group input:focus,
 .form-check input:focus + label::before,
 select:focus,
@@ -39,3 +43,14 @@ form button:focus {
      border-color: var(--contrast);
      box-shadow: 0 0 0 3px var(--contrast-alpha-25);
  }
+
+.form-errors {
+    color: var(--red);
+    font-size: .9rem;
+    margin-top: .3rem;
+    line-height: 1.2;
+}
+
+.form-errors > * + * {
+    margin-top: .3rem;
+}
