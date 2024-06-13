@@ -18,22 +18,10 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 
 class LoginFormAuthenticatorTest extends TestCase
 {
-
-    /**
-     * @var MockObject|UserRepository
-     */
+    /** @var MockObject|UserRepository */
     private MockObject|UserRepository $userRepository;
 
-    /**
-     * @var MockObject|UrlGeneratorInterface
-     */
-    private MockObject|UrlGeneratorInterface $urlGenerator;
-
-    /**
-     * @var EventDispatcherInterface|MockObject
-     */
-    private MockObject|EventDispatcherInterface $eventDispatcher;
-
+    /** @var LoginFormAuthenticator  */
     private LoginFormAuthenticator $authenticator;
 
     protected function setUp(): void
@@ -41,16 +29,16 @@ class LoginFormAuthenticatorTest extends TestCase
         parent::setUp();
         $this->userRepository = $this->getMockBuilder(UserRepository::class)
             ->disableOriginalConstructor()->getMock();
-        $this->urlGenerator = $this->getMockBuilder(UrlGeneratorInterface::class)->getMock();
-        $this->eventDispatcher = $this->createMock(EventDispatcherInterface::class);
+        $urlGenerator = $this->getMockBuilder(UrlGeneratorInterface::class)->getMock();
+        $eventDispatcher = $this->createMock(EventDispatcherInterface::class);
         /* @var MockObject|UrlMatcherInterface $urlMatcher */
         $urlMatcher = $this->createMock(UrlMatcherInterface::class);
         $urlMatcher->expects($this->any())->method('match')->willReturn([]);
         $this->authenticator = new LoginFormAuthenticator(
-            $this->urlGenerator,
+            $urlGenerator,
             $this->userRepository,
             $this->createMock(UrlMatcherInterface::class),
-            $this->eventDispatcher,
+            $eventDispatcher,
         );
     }
     public function testPassportAuthentication(): void
