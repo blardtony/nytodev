@@ -21,7 +21,7 @@ readonly class UserService
      * @param string $plainPassword
      * @return void
      */
-    public function registerUser(User $user, string $plainPassword) : void
+    public function registerUser(User $user, string $plainPassword): void
     {
         $user
             ->setPassword(
