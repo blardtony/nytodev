@@ -39,4 +39,22 @@ class RegistrationController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/activation/{id}', name: 'auth_activation', requirements: ['id' => '\d+'])]
+    public function activation(User $user, Request $request): Response
+    {
+        $token = $request->query->get('token');
+        if (empty($token) || $token !== $user->getToken()) {
+            $this->addFlash('danger', 'Token invalide');
+            return $this->redirectToRoute('auth_registration');
+        }
+        if ($user->getCreatedAt() < new \DateTimeImmutable('-3 hours')) {
+            $this->addFlash('danger', 'Le lien a expiré');
+            return $this->redirectToRoute('auth_registration');
+        }
+        $user->setToken(null);
+        $this->userService->saveUser($user);
+        $this->addFlash('success', 'Votre compte a été activé avec succès');
+        return $this->redirectToRoute('auth_login');
+    }
 }
