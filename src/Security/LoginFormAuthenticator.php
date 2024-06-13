@@ -39,7 +39,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             new UserBadge($email, fn (string $userIdentifier) => $this->userRepository->findOneByEmail($userIdentifier)),
             new PasswordCredentials($password),
             [
-                new CsrfTokenBadge('authenticate', $request->get('_csrf_token'))
+                new CsrfTokenBadge('authenticate', $request->request->getString('_csrf_token'))
             ]
         );
         return $this->passport;
