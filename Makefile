@@ -23,6 +23,11 @@ help: ## Affiche l'aide
 dev: vendor/autoload.php ## Lance le serveur de développement
 	$(dc) up
 
+.PHONY: tests
+tests: ## Lance les tests
+	$(sy) d:s:u -f -e test
+	$(sy) doctrine:fixtures:load -e test -n
+	$(php) bin/phpunit  --testdox --colors=always
 # Dépendances
 vendor/autoload.php: composer.lock
 	$(php) composer install
