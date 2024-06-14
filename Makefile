@@ -24,10 +24,17 @@ dev: vendor/autoload.php ## Lance le serveur de développement
 	$(dc) up
 
 .PHONY: tests
-tests: ## Lance les tests
+tests: vendor/autoload.php ## Lance les tests
 	$(sy) d:s:u -f -e test
 	$(sy) doctrine:fixtures:load -e test -n
 	$(php) bin/phpunit  --testdox --colors=always
+
+.PHONY: linters
+linters: vendor/autoload.php ## Lance le linter
+	$(sy) lint:yaml config
+	$(sy) lint:twig templates
+	$(sy) lint:container
+	vendor/bin/phpstan analyse src --level=9
 # Dépendances
 vendor/autoload.php: composer.lock
 	$(php) composer install

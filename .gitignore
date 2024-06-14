@@ -61,3 +61,7 @@ yarn-error.log
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
 /tools/php-cs-fixer/vendor
+###> phpstan/phpstan ###
+phpstan.neon
+phpstan.dist.neon
+###< phpstan/phpstan ###

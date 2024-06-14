@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
@@ -28,19 +27,19 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     private ?Passport $passport = null;
     final public const string LOGIN_ROUTE = 'auth_login';
 
-    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly UserRepository $userRepository, private readonly UrlMatcherInterface $urlMatcher, private readonly EventDispatcherInterface $eventDispatcher)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly UserRepository $userRepository, private readonly EventDispatcherInterface $eventDispatcher)
     {
     }
     public function authenticate(Request $request): Passport
     {
-        $email = $request->request->get('email', '');
-        $password = $request->request->get('password', '');
+        $email = $request->request->getString('email');
+        $password = $request->request->getString('password');
 
         $this->passport = new Passport(
             new UserBadge($email, fn (string $userIdentifier) => $this->userRepository->findOneByEmail($userIdentifier)),
             new PasswordCredentials($password),
             [
-                new CsrfTokenBadge('authenticate', $request->get('_csrf_token'))
+                new CsrfTokenBadge('authenticate', $request->request->getString('_csrf_token'))
             ]
         );
         return $this->passport;

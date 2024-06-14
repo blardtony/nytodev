@@ -18,8 +18,8 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 
 class LoginFormAuthenticatorTest extends TestCase
 {
-    /** @var MockObject|UserRepository */
-    private MockObject|UserRepository $userRepository;
+    /** @var MockObject&UserRepository */
+    private MockObject&UserRepository $userRepository;
 
     /** @var LoginFormAuthenticator  */
     private LoginFormAuthenticator $authenticator;
@@ -31,13 +31,9 @@ class LoginFormAuthenticatorTest extends TestCase
             ->disableOriginalConstructor()->getMock();
         $urlGenerator = $this->getMockBuilder(UrlGeneratorInterface::class)->getMock();
         $eventDispatcher = $this->createMock(EventDispatcherInterface::class);
-        /* @var MockObject|UrlMatcherInterface $urlMatcher */
-        $urlMatcher = $this->createMock(UrlMatcherInterface::class);
-        $urlMatcher->expects($this->any())->method('match')->willReturn([]);
         $this->authenticator = new LoginFormAuthenticator(
             $urlGenerator,
             $this->userRepository,
-            $this->createMock(UrlMatcherInterface::class),
             $eventDispatcher,
         );
     }
