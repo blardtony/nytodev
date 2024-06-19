@@ -1,0 +1,46 @@
+{% apply inline_css(source('@styles/mail/base.css')) %}
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" >
+            <tr>
+                <td align="center">
+                    <table class="content" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="navbar">
+                                <a href="{{ absolute_url('/') }}" style="display: inline-block;">
+                                    <img src="{{ email.image('@images/logo_email.png') }}" class="logo" alt="Nytodev Logo">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="body" width="100%" cellpadding="0" cellspacing="0">
+                    <table class="inner-body" align="center" width="500" cellpadding="0" cellspacing="0" role="presentation">
+                        <!-- Body content -->
+                        <tr>
+                            <td class="content-cell">
+                                {% block body %}
+                                    <h1>Hello TestController!</h1>
+                                    <p>This is a test email.</p>
+                                    <p>Click the link below to send an email:</p>
+                                    <a href="{{ absolute_url('/') }}" style="display: inline-block;">
+                                        Valider
+                                    </a>
+                                {% endblock %}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+    </html>
+{% endapply %}
