@@ -65,3 +65,5 @@ yarn-error.log
 phpstan.neon
 phpstan.dist.neon
 ###< phpstan/phpstan ###
+/src/Controller/TestController.php
+templates/test/
